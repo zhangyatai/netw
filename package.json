@@ -1,9 +1,9 @@
 {
   "name": "netw",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
-  "apiVersion":"0.0.0",
+  "apiVersion": "0.0.0",
   "scripts": {
     "test": "node ./tests/main.js",
     "hw": "git add -A && git commit -m 'oki'&&npm version patch -m patch&&git add -A && git commit --amend -C HEAD&& git push&&npm publish",
