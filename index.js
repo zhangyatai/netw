@@ -1,5 +1,4 @@
-exec = require('child_process').exec,
-memrun=require('memrun'),
+var memrun=require('memrun'),
 Promise = require('promise');
 
 
