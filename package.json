@@ -20,6 +20,7 @@
     "url": "https://github.com/dottgonzo/netw/issues"
   },
   "dependencies": {
+    "external-address": "0.0.1",
     "memrun": "0.0.15",
     "promise": "^7.0.4"
   },

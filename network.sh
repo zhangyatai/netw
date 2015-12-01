@@ -20,7 +20,7 @@ n_mac=$(ifconfig $n_label | grep 'Link'| awk '{print($5)}')
 
 
 
-		if [[ $(route | grep default | awk '{print($8)}') == $n_label ]]; then
+		if [[ $(route | grep default |grep -c "$n_label" ) > 0 ]]; then
 		n_connected=true
 
 
@@ -78,11 +78,12 @@ fi
 
 done
 
-
+interfaceType='wifi'
 scan="[$netscan]"
 else
+	interfaceType='wired'
 
-scan='"no wifi"'
+scan=false
 
 fi
 
@@ -94,12 +95,25 @@ fi
 
 
 
+if [[ interfaceType && interfaceType == "wifi" ]]; then
+	network='{"interfaceType":"'$interfaceType'","dev":"'$n_label'","mac":"'$n_mac'","ip":"'$n_ip'","inuse":'$n_inuse',"connected":'$n_connected',"essid":"'$net_essid'","scan":'$scan'}'
 
+else
+	network='{"interfaceType":"'$interfaceType'","dev":"'$n_label'","mac":"'$n_mac'","ip":"'$n_ip'","inuse":'$n_inuse',"connected":'$n_connected'}'
 
-network='{"dev":"'$n_label'","mac":"'$n_mac'","ip":"'$n_ip'","inuse":'$n_inuse',"connected":'$n_connected',"essid":"'$net_essid'","scan":'$scan'}'
+fi
 
 if [[ $n_connected == true && $n_inuse == true ]]; then
-net='{"dev":"'$n_label'","mac":"'$n_mac'","ip":"'$n_ip'","essid":"'$net_essid'","quality":"'$quality'"}'
+
+	if [[ interfaceType && interfaceType == "wifi" ]]; then
+		net='{"interfaceType":"'$interfaceType'","dev":"'$n_label'","mac":"'$n_mac'","ip":"'$n_ip'","essid":"'$net_essid'","quality":"'$quality'"}'
+
+	else
+		net='{"interfaceType":"'$interfaceType'","dev":"'$n_label'","mac":"'$n_mac'","ip":"'$n_ip'"}'
+	fi
+
+
+
 fi
 
 if [[ "$n" == "0" ]]; then
