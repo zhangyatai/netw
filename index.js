@@ -27,6 +27,7 @@ module.exports = function(){
       if(Ip){
         resolve(Ip)
       } else{
+        getip();
         reject('no ip')
 
       }
@@ -45,7 +46,7 @@ timeout:6000
   networking.externalIp=answer;
   resolve(networking)
 }).catch(function(err){
-  verb('no external ip','warn','netw')
+  verb(err,'warn','netw')
   resolve(networking)
 });
 
