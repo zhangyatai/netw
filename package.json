@@ -22,10 +22,9 @@
   "dependencies": {
     "external-ip": "^0.2.4",
     "promise": "^7.0.4",
-    "promised-exec": "^1.0.1",
-    "verbo": "0.0.9"
+    "promised-exec": "^1.0.1"
   },
   "devDependencies": {
-    "verbo": "0.0.7"
+    "chai": "^3.4.1"
   }
 }
