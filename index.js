@@ -1,5 +1,6 @@
 var exec=require('promised-exec'),
 getIP = require('external-ip')(),
+verb=require('verbo'),
 Promise = require('promise');
 
 
