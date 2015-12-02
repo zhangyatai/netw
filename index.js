@@ -8,11 +8,15 @@ Promise = require('promise');
 
 
 
-module.exports = function(){
+module.exports = function(verb){
+  verbose=false
+  if (verb){
+    verbose=true
+  }
   var Ip=false
   function getip(){
     getIP()(function (err, ip){
-      if(err){
+      if(err&&verbose){
         verb(err,'warn','Netw, external ip error')
       } else if(ip){
         Ip=ip
@@ -41,12 +45,15 @@ module.exports = function(){
 
 waitfor.pre(eip,{
   time:1800,
-timeout:4000
+timeout:4000,
+verbose:false
 }).then(function(answer){
   networking.externalIp=answer;
   resolve(networking)
 }).catch(function(err){
-  verb(err,'warn','netw')
+  if(verbose){
+    verb(err,'warn','netw')
+  }
   resolve(networking)
 });
 
