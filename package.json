@@ -20,7 +20,6 @@
     "url": "https://github.com/dottgonzo/netw/issues"
   },
   "dependencies": {
-    "external-ip": "^0.2.4",
     "promise": "^7.0.4",
     "promised-exec": "^1.0.1"
   },
