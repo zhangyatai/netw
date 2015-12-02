@@ -13,7 +13,8 @@ module.exports = function(){
       getIP(function (err, ip){
         if(err){
           verb(err,'warn','Netw, external ip error')
-        } else{
+        }
+        if(ip){
           networking.externalIp=ip
         }
 
