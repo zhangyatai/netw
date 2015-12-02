@@ -40,8 +40,8 @@ module.exports = function(){
 
 
 waitfor.pre(eip,{
-  time:2000,
-timeout:30000
+  time:1800,
+timeout:4000
 }).then(function(answer){
   networking.externalIp=answer;
   resolve(networking)
