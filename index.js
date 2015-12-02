@@ -1,7 +1,7 @@
 var exec=require('promised-exec'),
 verb=require('verbo'),
 waitfor=require('waitfor-promise'),
-getIP = require('external-ip')(),
+getIP = require('external-ip'),
 Promise = require('promise');
 
 
@@ -11,7 +11,7 @@ Promise = require('promise');
 module.exports = function(){
   var Ip=false
   function getip(){
-    getIP(function (err, ip){
+    getIP()(function (err, ip){
       if(err){
         verb(err,'warn','Netw, external ip error')
       } else if(ip){
