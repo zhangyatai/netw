@@ -1,7 +1,7 @@
 var netw=require('../index.js'),
 verb=require("verbo");
 
-netw.data().then(function(doc){
+netw().then(function(doc){
 
 if(doc){
 

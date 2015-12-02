@@ -21,8 +21,9 @@
   },
   "dependencies": {
     "external-address": "0.0.1",
-    "memrun": "0.0.15",
-    "promise": "^7.0.4"
+    "external-ip": "^0.2.4",
+    "promise": "^7.0.4",
+    "promised-exec": "^1.0.1"
   },
   "devDependencies": {
     "verbo": "0.0.7"
