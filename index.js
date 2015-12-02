@@ -11,11 +11,13 @@ module.exports = function(){
       var networking=JSON.parse(data)
       getIP(function (err, ip){
         if(err){
-          verb(err,'error','Netw, external ip error')
+          verb(err,'warn','Netw, external ip error')
         } else{
           networking.externalIp=ip
-          resolve(networking);
         }
+
+        resolve(networking);
+
       })
 
     }).catch(function(err){
