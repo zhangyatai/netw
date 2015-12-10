@@ -2,10 +2,12 @@ var exec=require('promised-exec'),
 verb=require('verbo'),
 network=require('network'),
 Promise = require('promise');
+extIP = require('external-ip');
 
+var getIP = extIP({
 
-
-
+    timeout: 2000
+});
 
 module.exports = function(verb){
 
@@ -25,8 +27,7 @@ module.exports = function(verb){
 
         } else{
           networking.default=obj
-          network.get_public_ip(function(err, ip) {
-
+          getIP(function (err, ip) {
             if(err){
               resolve(networking)
             } else if(!ip){
@@ -42,10 +43,6 @@ module.exports = function(verb){
           })
         }
     })
-
-
-
-
 
     }).catch(function(err){
       reject(err)

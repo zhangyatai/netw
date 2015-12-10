@@ -97,7 +97,7 @@ for (( n=0; n<$(ifconfig -s | awk '{print($1)}' | grep -v Iface | grep -v lo | w
 	network='{"type":"'$interfaceType'","interface":"'$n_label'","mac":"'$n_mac'"'
 
 
-	if [[ interfaceType && interfaceType == "wifi" ]]; then
+	if [[ $interfaceType && $interfaceType == "wifi" ]]; then
 		network=$network',"essid":"'$net_essid'","scan":'$scan
 	fi
 	if [[ $n_inuse == true ]]; then
