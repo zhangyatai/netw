@@ -94,7 +94,7 @@ for (( n=0; n<$(ifconfig -s | awk '{print($1)}' | grep -v Iface | grep -v lo | w
 
 
 
-	network='{"interfaceType":"'$interfaceType'","interface":"'$n_label'","mac":"'$n_mac'"'
+	network='{"type":"'$interfaceType'","interface":"'$n_label'","mac":"'$n_mac'"'
 
 
 	if [[ interfaceType && interfaceType == "wifi" ]]; then
@@ -108,7 +108,7 @@ for (( n=0; n<$(ifconfig -s | awk '{print($1)}' | grep -v Iface | grep -v lo | w
 		fi
 
 	fi
-	
+
 	network=$network'}'
 
 	if [[ $n_connected == true && $n_inuse == true ]]; then
@@ -116,10 +116,10 @@ for (( n=0; n<$(ifconfig -s | awk '{print($1)}' | grep -v Iface | grep -v lo | w
 
 
 		if [[ interfaceType && interfaceType == "wifi" ]]; then
-			net='{"interfaceType":"'$interfaceType'","interface":"'$n_label'","mac":"'$n_mac'","ip":"'$n_ip'","essid":"'$net_essid'","quality":"'$quality'"}'
+			net='{"type":"'$interfaceType'","interface":"'$n_label'","mac":"'$n_mac'","ip":"'$n_ip'","essid":"'$net_essid'","quality":"'$quality'"}'
 
 		else
-			net='{"interfaceType":"'$interfaceType'","interface":"'$n_label'","mac":"'$n_mac'","ip":"'$n_ip'"}'
+			net='{"type":"'$interfaceType'","interface":"'$n_label'","mac":"'$n_mac'","ip":"'$n_ip'"}'
 		fi
 
 		if [[ !$nets ]]; then
