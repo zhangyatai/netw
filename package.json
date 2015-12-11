@@ -23,6 +23,7 @@
   "dependencies": {
     "external-ip": "^0.2.4",
     "promise": "^7.0.4",
+    "promise-test-connection": "0.0.5",
     "promised-exec": "^1.0.1",
     "verbo": "0.0.9"
   },

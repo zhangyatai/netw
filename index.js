@@ -1,5 +1,6 @@
 var exec=require('promised-exec'),
 verb=require('verbo'),
+testInternet=require('promise-test-connection'),
 Promise = require('promise');
 extIP = require('external-ip');
 
@@ -16,18 +17,23 @@ module.exports = function(verb){
       networking.externalIp=false;
       networking.internet=false;
 
-      getIP(function (err, ip) {
-        if(err){
-          resolve(networking)
-        } else if(!ip){
-          resolve(networking)
-        } else {
-          networking.externalIp=ip
-          networking.internet=true
-          resolve(networking)
-        }
-      })
+      testInternet().then(function(){
+        networking.internet=true;
 
+        getIP(function (err, ip) {
+          if(err){
+            resolve(networking)
+          } else if(!ip){
+            resolve(networking)
+          } else {
+            networking.externalIp=ip
+            resolve(networking)
+          }
+        })
+
+      }).catch(function(){
+        resolve(networking)
+      })
     }).catch(function(err){
       reject(err)
     });
