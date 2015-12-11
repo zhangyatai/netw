@@ -5,47 +5,33 @@ Promise = require('promise');
 extIP = require('external-ip');
 
 var getIP = extIP({
-
-    timeout: 2000
+  timeout: 10000
 });
 
 module.exports = function(verb){
 
-    return new Promise(function (resolve, reject) {
+  return new Promise(function (resolve, reject) {
     exec(__dirname+'/network.sh').then(function(data){
-      var networking=JSON.parse(data)
 
-      networking.externalIp=false
-      networking.internet=false
+      var networking=JSON.parse(data);
+      networking.externalIp=false;
+      networking.internet=false;
 
-      network.get_active_interface(function(err, obj) {
-
+      getIP(function (err, ip) {
         if(err){
           resolve(networking)
-        } else if(!obj){
+        } else if(!ip){
           resolve(networking)
-
-        } else{
-          networking.default=obj
-          getIP(function (err, ip) {
-            if(err){
-              resolve(networking)
-            } else if(!ip){
-              resolve(networking)
-
-            } else {
-              networking.externalIp=ip
-              networking.internet=true
-              resolve(networking)
-
-            }
-
-          })
+        } else {
+          networking.externalIp=ip
+          networking.internet=true
+          resolve(networking)
         }
-    })
-
+      })
+      
     }).catch(function(err){
       reject(err)
     });
-    });
-  }
+  });
+
+}

@@ -40,8 +40,14 @@ for (( n=0; n<$(ifconfig -s | awk '{print($1)}' | grep -v Iface | grep -v lo | w
 
 	if iwconfig $n_label > /dev/null 2>&1 ; then
 		net_essid=$(iwgetid | grep $n_label | sed -e '/ESSID/!d' -e 's/.*ESSID:"/"/' | sed 's/"//g')
+
+		if [[ $net_essid == '' ]]; then
+			net_essid=false
+
+		fi
+
 	else
-		net_essid=""
+		net_essid=false
 	fi
 
 
@@ -98,7 +104,14 @@ for (( n=0; n<$(ifconfig -s | awk '{print($1)}' | grep -v Iface | grep -v lo | w
 
 
 	if [[ $interfaceType && $interfaceType == "wifi" ]]; then
+		if [[ $net_essid != false ]]; then
+
 		network=$network',"essid":"'$net_essid'","scan":'$scan
+	else
+		network=$network',"scan":'$scan
+
+	fi
+
 	fi
 	if [[ $n_inuse == true ]]; then
 		network=$network',"ip":"'$n_ip'"'
@@ -111,25 +124,25 @@ for (( n=0; n<$(ifconfig -s | awk '{print($1)}' | grep -v Iface | grep -v lo | w
 
 	network=$network'}'
 
-	if [[ $n_connected == true && $n_inuse == true ]]; then
-
-
-
-		if [[ interfaceType && interfaceType == "wifi" ]]; then
-			net='{"type":"'$interfaceType'","interface":"'$n_label'","mac":"'$n_mac'","ip":"'$n_ip'","essid":"'$net_essid'","quality":"'$quality'"}'
-
-		else
-			net='{"type":"'$interfaceType'","interface":"'$n_label'","mac":"'$n_mac'","ip":"'$n_ip'"}'
-		fi
-
-		if [[ !$nets ]]; then
-
-			nets="$net"
-		else
-			nets="$nets,$net"
-		fi
-
-	fi
+	# if [[ $n_connected == true && $n_inuse == true ]]; then
+	#
+	#
+	#
+	# 	if [[ interfaceType && interfaceType == "wifi" ]]; then
+	# 		net='{"type":"'$interfaceType'","interface":"'$n_label'","mac":"'$n_mac'","ip":"'$n_ip'","essid":"'$net_essid'","quality":"'$quality'"}'
+	#
+	# 	else
+	# 		net='{"type":"'$interfaceType'","interface":"'$n_label'","mac":"'$n_mac'","ip":"'$n_ip'"}'
+	# 	fi
+	#
+	# 	if [[ !$nets ]]; then
+	#
+	# 		nets="$net"
+	# 	else
+	# 		nets="$nets,$net"
+	# 	fi
+	#
+	# fi
 
 	if [[ "$n" == "0" ]]; then
 		networks="$network"
@@ -139,9 +152,9 @@ for (( n=0; n<$(ifconfig -s | awk '{print($1)}' | grep -v Iface | grep -v lo | w
 
 
 done
-if [[ $nets != false ]]; then
-	echo '{"networks":['$networks'],"routes":['$nets']}'
-else
+# if [[ $nets != false ]]; then
+#	echo '{"networks":['$networks'],"routes":['$nets']}'
+# else
 	echo '{"networks":['$networks']}'
 
-fi
+# fi
