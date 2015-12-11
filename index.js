@@ -1,6 +1,5 @@
 var exec=require('promised-exec'),
 verb=require('verbo'),
-network=require('network'),
 Promise = require('promise');
 extIP = require('external-ip');
 
@@ -28,7 +27,7 @@ module.exports = function(verb){
           resolve(networking)
         }
       })
-      
+
     }).catch(function(err){
       reject(err)
     });
