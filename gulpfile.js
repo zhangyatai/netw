@@ -40,7 +40,6 @@ gulp.task('patch', ['Addbumped'], function () {
     }, function (res) {
         return gulp.src('.').pipe(git.commit(res.commit)) .on('end', function(){
       this.pipe(git.push())
-      .end();
     });;
     }));
 });

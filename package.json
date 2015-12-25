@@ -1,6 +1,6 @@
 {
   "name": "netw",
-  "version": "0.0.38",
+  "version": "0.0.39",
   "description": "Utility that show informations about networking interfaces",
   "main": "lib/index.js",
   "apiVersion": "0.0.0",
