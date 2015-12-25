@@ -23,16 +23,20 @@ var tag_version = require('gulp-tag-version');
 
 
 
-gulp.task('patch', ['bump'], function () {
+gulp.task('patch', ['CommitAllbumped'], function () {
     return git.push();
 });
 
-gulp.task('add', function () {
-    return gulp.src('.').pipe(git.add({args: '-A'}));
+gulp.task('bumpPatch', function () {
+    return gulp.src('./package.json').pipe(bump({
+        type: 'patch'
+    })).pipe(gulp.dest('./'));
 });
 
-
-gulp.task('commit', ['add'], function () {
+gulp.task('Addbumped', ['bumpPatch'], function () {
+    return gulp.src('.').pipe(git.add({args: '-A'}));
+});
+gulp.task('CommitAllbumped', ['Addbumped'], function () {
     return gulp.src('.').pipe(prompt.prompt({
         type: 'input',
         name: 'commit',
@@ -41,13 +45,6 @@ gulp.task('commit', ['add'], function () {
         return gulp.src('.').pipe(git.commit(res.commit));
     }));
 });
-
-gulp.task('bump', ['commit'], function () {
-    return gulp.src('./package.json').pipe(bump({
-        type: 'patch'
-    })).pipe(gulp.dest('./'));
-});
-
 
 gulp.task('test', function () {
     return gulp.src('test/**/*.js', { read: false })
