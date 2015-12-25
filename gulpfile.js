@@ -24,7 +24,7 @@ var tag_version = require('gulp-tag-version');
 
 
 gulp.task('push', ['bump'], function () {
-    return gulp.src('.').pipe(git.push());
+    return git.push();
 });
 
 gulp.task('add', function () {
