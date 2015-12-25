@@ -8,12 +8,10 @@ var tsProject = ts.createProject('tsconfig.json');
 var spawn = require('child_process').spawn;
 var bump = require('gulp-bump');
 
-var fs = require('fs');
+
 var prompt = require('gulp-prompt');
 var git = require('gulp-git');
 
-var filter = require('gulp-filter');
-var tag_version = require('gulp-tag-version');
 
 
 
@@ -21,6 +19,9 @@ var tag_version = require('gulp-tag-version');
 
 
 
+gulp.task('quickpatch', ['pushPatch'], function (done) {
+  spawn('npm', ['publish'], { stdio: 'inherit' }).on('close', done);
+});
 
 
 gulp.task('bumpPatch', function () {
@@ -30,17 +31,17 @@ gulp.task('bumpPatch', function () {
 });
 
 gulp.task('Addbumped', ['bumpPatch'], function () {
-    return gulp.src('.').pipe(git.add({args: '-A'}));
+    return gulp.src('.').pipe(git.add({ args: '-A' }));
 });
-gulp.task('patch', ['Addbumped'], function () {
+gulp.task('pushPatch', ['Addbumped'], function () {
     return gulp.src('.').pipe(prompt.prompt({
         type: 'input',
         name: 'commit',
         message: 'enter a commit msg, eg initial commit'
     }, function (res) {
-        return gulp.src('.').pipe(git.commit(res.commit)) .on('end', function(){
-      this.pipe(git.push())
-    });;
+        return gulp.src('.').pipe(git.commit(res.commit)).on('end', function () {
+            this.pipe(git.push())
+        });;
     }));
 });
 
