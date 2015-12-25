@@ -21,9 +21,7 @@ var tag_version = require('gulp-tag-version');
 
 
 
-gulp.task('patch', ['CommitAllbumped'], function () {
-    return gulp.src('./').pipe(git.push());
-});
+
 
 gulp.task('bumpPatch', function () {
     return gulp.src('./package.json').pipe(bump({
@@ -34,13 +32,16 @@ gulp.task('bumpPatch', function () {
 gulp.task('Addbumped', ['bumpPatch'], function () {
     return gulp.src('.').pipe(git.add({args: '-A'}));
 });
-gulp.task('CommitAllbumped', ['Addbumped'], function () {
+gulp.task('patch', ['Addbumped'], function () {
     return gulp.src('.').pipe(prompt.prompt({
         type: 'input',
         name: 'commit',
         message: 'enter a commit msg, eg initial commit'
     }, function (res) {
-        return gulp.src('.').pipe(git.commit(res.commit));
+        return gulp.src('.').pipe(git.commit(res.commit)) .on('end', function(){
+      this.pipe(git.push())
+      .end();
+    });;
     }));
 });
 
