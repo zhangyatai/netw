@@ -22,7 +22,7 @@ var tag_version = require('gulp-tag-version');
 
 
 gulp.task('patch', ['CommitAllbumped'], function () {
-    return git.push();
+    return gulp.src('./').pipe(git.push());
 });
 
 gulp.task('bumpPatch', function () {
