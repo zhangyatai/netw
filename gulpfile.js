@@ -23,7 +23,7 @@ var tag_version = require('gulp-tag-version');
 
 
 
-gulp.task('push', ['bump'], function () {
+gulp.task('patch', ['bump'], function () {
     return git.push();
 });
 
