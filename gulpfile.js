@@ -18,6 +18,11 @@ var tag_version = require('gulp-tag-version');
 
 
 
+
+
+
+
+
 gulp.task('push', ['bump'], function () {
     return gulp.src('.').pipe(git.push());
 });
@@ -40,7 +45,7 @@ gulp.task('commit', ['add'], function () {
 gulp.task('bump', ['commit'], function () {
     return gulp.src('./package.json').pipe(bump({
         type: 'patch'
-    }));
+    })).pipe(gulp.dest('.'));
 });
 
 
@@ -58,6 +63,6 @@ gulp.task('build', function () {
 					   }));
 
     return tsResult
-        .pipe(sourcemaps.write()) // Now the sourcemaps are added to the .js file !? 
+        .pipe(sourcemaps.write()) // Now the sourcemaps are added to the .js file 
         .pipe(gulp.dest('.'));
 });
