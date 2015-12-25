@@ -18,15 +18,9 @@ var tag_version = require('gulp-tag-version');
 
 
 
-var bumpPreference = fs.existsSync('package.json') ? 'package.json' : 'bower.json';
 
 
 
-var paths = {
-    versionsToBump: ['./package.json'],
-    version: bumpPreference,
-    dest: '.'
-};
 
 
 gulp.task('push', ['bump'], function () {
