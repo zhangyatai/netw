@@ -45,7 +45,7 @@ gulp.task('commit', ['add'], function () {
 gulp.task('bump', ['commit'], function () {
     return gulp.src('./package.json').pipe(bump({
         type: 'patch'
-    })).pipe(gulp.dest('.'));
+    })).pipe(gulp.dest('./'));
 });
 
 
