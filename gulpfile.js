@@ -14,11 +14,6 @@ var git = require('gulp-git');
 
 
 
-
-
-
-
-
 gulp.task('quickpatch', ['pushPatch'], function (done) {
   spawn('npm', ['publish'], { stdio: 'inherit' }).on('close', done);
 });
