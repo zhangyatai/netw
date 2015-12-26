@@ -16,7 +16,6 @@ gulp.task('quickpatch', ['pushPatch'], function (done) {
   spawn('npm', ['publish'], { stdio: 'inherit' }).on('close', done);
 });
 
-
 gulp.task('bumpPatch', function () {
     return gulp.src('./package.json').pipe(bump({
         type: 'patch'
