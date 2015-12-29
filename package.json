@@ -1,12 +1,12 @@
 {
   "name": "netw",
-  "version": "0.0.46",
+  "version": "0.0.47",
   "description": "Utility that show informations about networking interfaces",
   "main": "lib/index.js",
   "apiVersion": "0.0.0",
   "scripts": {
     "test": "node_modules/.bin/mocha",
-    "start": "node ./run.js",
+    "start": "node ./bin/index.js",
     "hw": "git add -A && git commit -m 'oki'&&npm version patch -m patch&&git add -A && git commit --amend -C HEAD&& git push&&npm publish",
     "patch": "npm version patch -m patch&&git add -A && git commit --amend -C HEAD&& git push&&npm publish",
     "prepublish": "npm test"
