@@ -8,7 +8,6 @@ var tsProject = ts.createProject('tsconfig.json');
 var spawn = require('child_process').spawn;
 var bump = require('gulp-bump');
 
-
 var prompt = require('gulp-prompt');
 var git = require('gulp-git');
 
@@ -22,6 +21,7 @@ gulp.task('bumpPatch', function () {
     })).pipe(gulp.dest('./'));
 });
 
+
 gulp.task('Addbumped', ['bumpPatch'], function () {
     return gulp.src('.').pipe(git.add({ args: '-A' }));
 });
@@ -32,14 +32,18 @@ gulp.task('pushPatch', ['Addbumped'], function () {
         message: 'enter a commit msg, eg initial commit'
     }, function (res) {
         return gulp.src('.').pipe(git.commit(res.commit)).on('end', function () {
-            this.pipe(git.push())
+            git.push()
         });;
     }));
 });
 
-gulp.task('test', function () {
+gulp.task('test', function (done) {
     return gulp.src('test/**/*.js', { read: false })
-        .pipe(mocha({ reporter: 'spec' }));
+        .pipe(mocha({ reporter: 'spec' }).on('error', function (err) {
+     throw err;
+   }).on('close', function () {
+        process.exit(-1);
+   }));
 });
 
 gulp.task('build', function () {

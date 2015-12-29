@@ -8,7 +8,7 @@ describe("netw object", function () {
 
     before(function () {
         return netw().then(function (data) {
-            networking = data
+            return networking = data
         });
     });
 

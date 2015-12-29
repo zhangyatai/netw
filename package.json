@@ -1,6 +1,6 @@
 {
   "name": "netw",
-  "version": "0.0.45",
+  "version": "0.0.46",
   "description": "Utility that show informations about networking interfaces",
   "main": "lib/index.js",
   "apiVersion": "0.0.0",
@@ -38,6 +38,7 @@
     "gulp-bump": "^1.0.0",
     "gulp-concat": "^2.6.0",
     "gulp-filter": "^3.0.1",
+    "gulp-git": "^1.6.0",
     "gulp-mocha": "^2.2.0",
     "gulp-prompt": "^0.1.2",
     "gulp-sourcemaps": "^1.6.0",
