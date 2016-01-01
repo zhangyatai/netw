@@ -7,13 +7,11 @@ export = function(e: void) {
     return new Promise(function(resolve, reject) {
         let callbacked = false;
 
-
         let timo = setTimeout(function() {
             if (!callbacked) {
                 reject("timeout error");
             }
         }, 20000)
-
 
         child_process.exec(__dirname + "/../scripts/linux/network.sh",
             function(error, stdout, stderr) {
