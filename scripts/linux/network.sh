@@ -21,9 +21,9 @@ for (( n=0; n<$(ifconfig -s | awk '{print($1)}' | grep -v Iface | grep -v lo | w
 
 
 
-		if [[ $(route | grep default |grep -c "$n_label" ) > 0 ]]; then
+		if [[ $(route -n | grep "0.0.0.0" |grep -c "$n_label" ) > 0 ]]; then
 			n_connected=true
-			gateway=$(route | grep default |grep "$n_label"  | head -1 | awk '{print($2)}' )
+			gateway=$(route -n | grep "0.0.0.0" |grep "$n_label"  | head -1 | awk '{print($2)}' )
 
 
 		else
