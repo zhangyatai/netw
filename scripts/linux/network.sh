@@ -7,7 +7,7 @@ for (( n=0; n<$(ifconfig -s | awk '{print($1)}' | grep -v Iface | grep -v lo | w
 	nni=$(( $n + 1 ))
 	n_label=$(ifconfig -s | awk '{print($1)}' | grep -v Iface | grep -v lo | sed -n $nni''p)
 
-	n_mac=$(ifconfig $n_label | grep 'Link'| awk '{print($5)}')
+	n_mac=$(ifconfig $n_label | grep 'Link' | head -1 | awk '{print($5)}')
 
 
 
@@ -15,7 +15,7 @@ for (( n=0; n<$(ifconfig -s | awk '{print($1)}' | grep -v Iface | grep -v lo | w
 
 	if [[ $(ifconfig $n_label | grep -c 'inet') > 0 ]]; then
 
-		n_ip=$(ip a | grep inet | grep $n_label | awk '{print$(2)}'|sed 's/\/24//g')
+		n_ip=$(ip a | grep inet | grep $n_label | awk '{print$(2)}' | head -1 |sed 's/\/24//g')
 
 		n_inuse=true
 
@@ -23,7 +23,7 @@ for (( n=0; n<$(ifconfig -s | awk '{print($1)}' | grep -v Iface | grep -v lo | w
 
 		if [[ $(route | grep default |grep -c "$n_label" ) > 0 ]]; then
 			n_connected=true
-			gateway=$(route | grep default |grep "$n_label" | awk '{print($2)}' )
+			gateway=$(route | grep default |grep "$n_label"  | head -1 | awk '{print($2)}' )
 
 
 		else
@@ -39,7 +39,7 @@ for (( n=0; n<$(ifconfig -s | awk '{print($1)}' | grep -v Iface | grep -v lo | w
 	fi
 
 	if iwconfig $n_label > /dev/null 2>&1 ; then
-		net_essid=$(iwgetid | grep $n_label | sed -e '/ESSID/!d' -e 's/.*ESSID:"/"/' | sed 's/"//g')
+		net_essid=$(iwgetid | grep $n_label | head -1  | sed -e '/ESSID/!d' -e 's/.*ESSID:"/"/' | sed 's/"//g')
 
 		if [[ $net_essid == '' ]]; then
 			net_essid=false
