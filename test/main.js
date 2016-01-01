@@ -2,7 +2,7 @@ var netw = require('../lib/index');
 var expect = require('chai').expect;
 var networking;
 
-
+// write tests about multiple values (2 ip or 2 gateway for the same interface)
 describe("netw object", function () {
     this.timeout(50000);
 
