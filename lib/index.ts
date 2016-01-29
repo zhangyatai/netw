@@ -11,7 +11,7 @@ export = function(e: void) {
             if (!callbacked) {
                 reject("timeout error");
             }
-        }, 20000)
+        }, 20000);
 
         child_process.exec(__dirname + "/../scripts/linux/network.sh",
             function(error, stdout, stderr) {
