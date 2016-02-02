@@ -19,8 +19,6 @@ interface Network {
 
 export = function() {
 
-
-
     return new Promise<Network[]>(function(resolve, reject) {
         let callbacked = false;
 
