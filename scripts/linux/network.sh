@@ -70,7 +70,7 @@ for (( n=0; n<$(ifconfig -s | awk '{print($1)}' | grep -v Iface | grep -v lo | w
 
 			iw_mac=$(cat /tmp/.wifiscan$n_label.tmp | grep Cell | awk '{print($5)}' | sed -n $iw''p)
 
-			netwifi='{"ESSID":"'$iw_essid'","mac":"'$iw_mac'","signal":"'$iw_signal'"}'
+			netwifi='{"essid":"'$iw_essid'","mac":"'$iw_mac'","signal":"'$iw_signal'"}'
 
 			if [[ $nettest == 0 ]];then
 				netscan="$netwifi"
@@ -155,6 +155,6 @@ done
 # if [[ $nets != false ]]; then
 #	echo '{"networks":['$networks'],"routes":['$nets']}'
 # else
-	echo '{"networks":['$networks']}'
+	echo '['$networks']'
 
 # fi

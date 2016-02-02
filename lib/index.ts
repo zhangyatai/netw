@@ -1,10 +1,27 @@
 import * as child_process from "child_process";
 import * as Promise from "bluebird";
 
+interface Scan {
+    essid: string;
+    mac: string;
+    signal: string;
+}
 
-export = function(e: void) {
+interface Network {
+    type: string;
+    mac: string;
+    interface: string;
+    essid?: string;
+    scan?: Scan[];
+    ip?: string;
+    gateway?: string;
+}
 
-    return new Promise(function(resolve, reject) {
+export = function() {
+
+
+
+    return new Promise<Network[]>(function(resolve, reject) {
         let callbacked = false;
 
         let timo = setTimeout(function() {
@@ -22,7 +39,7 @@ export = function(e: void) {
                 } else if (stderr) {
                     reject(stderr);
                 } else {
-                    resolve(JSON.parse(stdout + ""));
+                    resolve(JSON.parse(stdout.toString("utf-8")));
                 }
 
             });
