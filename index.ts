@@ -27,7 +27,7 @@ export default function netw() {
             }
         }, 20000);
 
-        child_process.exec(__dirname + "/../scripts/linux/network.sh",
+        child_process.exec(__dirname + "./scripts/linux/network.sh",
             function(error, stdout, stderr) {
                 callbacked = true;
                 clearTimeout(timo);
