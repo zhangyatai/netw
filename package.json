@@ -1,8 +1,8 @@
 {
   "name": "netw",
-  "version": "0.0.61",
+  "version": "0.0.63",
   "description": "Utility that show informations about networking interfaces",
-  "main": "lib/index.js",
+  "main": "index.js",
   "apiVersion": "0.0.0",
   "scripts": {
     "test": "node_modules/.bin/mocha",
