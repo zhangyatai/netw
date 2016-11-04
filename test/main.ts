@@ -1,4 +1,4 @@
-import netw from '../lib/index'
+import netw from '../index'
 import * as chai from 'chai'
 
 

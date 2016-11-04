@@ -1,4 +1,4 @@
-import netw from "../lib/index"
+import netw from "../index"
 
 netw().then(function(d){
         console.log(JSON.stringify(d));
