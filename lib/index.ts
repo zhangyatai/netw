@@ -17,11 +17,10 @@ interface Network {
     gateway?: string;
 }
 
-export = function() {
+export default function netw() {
 
     return new Promise<Network[]>(function(resolve, reject) {
         let callbacked = false;
-
         let timo = setTimeout(function() {
             if (!callbacked) {
                 reject("timeout error");
@@ -37,7 +36,7 @@ export = function() {
                 } else if (stderr) {
                     reject(stderr);
                 } else {
-                    resolve(JSON.parse(stdout.toString("utf-8")));
+                    resolve(JSON.parse(stdout.toString()));
                 }
 
             });

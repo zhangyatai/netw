@@ -1,20 +1,11 @@
 {
-  "ambientDependencies": {
-    "chai": "github:DefinitelyTyped/DefinitelyTyped/chai/chai.d.ts#dc9dabe74a5be62613b17a3605309783a12ff28a",
-    "assertion-error": "github:DefinitelyTyped/DefinitelyTyped/assertion-error/assertion-error.d.ts#dc9dabe74a5be62613b17a3605309783a12ff28a",
-    "gulp": "github:DefinitelyTyped/DefinitelyTyped/gulp/gulp.d.ts#dc9dabe74a5be62613b17a3605309783a12ff28a",
-    "orchestrator": "github:DefinitelyTyped/DefinitelyTyped/orchestrator/orchestrator.d.ts#dc9dabe74a5be62613b17a3605309783a12ff28a",
-    "Q": "github:DefinitelyTyped/DefinitelyTyped/q/Q.d.ts#dc9dabe74a5be62613b17a3605309783a12ff28a",
-    "mocha": "github:DefinitelyTyped/DefinitelyTyped/mocha/mocha.d.ts#dc9dabe74a5be62613b17a3605309783a12ff28a",
-    "node": "github:DefinitelyTyped/DefinitelyTyped/node/node.d.ts#dc9dabe74a5be62613b17a3605309783a12ff28a",
-    "bluebird": "github:DefinitelyTyped/DefinitelyTyped/bluebird/bluebird.d.ts#1da639a106527e0c4010b354a1efe52a3059a291",
-    "gulp-concat": "github:DefinitelyTyped/DefinitelyTyped/gulp-concat/gulp-concat.d.ts#dc9dabe74a5be62613b17a3605309783a12ff28a",
-    "gulp-mocha": "github:DefinitelyTyped/DefinitelyTyped/gulp-mocha/gulp-mocha.d.ts#dc9dabe74a5be62613b17a3605309783a12ff28a",
-    "gulp-sourcemaps": "github:DefinitelyTyped/DefinitelyTyped/gulp-sourcemaps/gulp-sourcemaps.d.ts#dc9dabe74a5be62613b17a3605309783a12ff28a",
-    "gulp-typescript": "github:DefinitelyTyped/DefinitelyTyped/gulp-typescript/gulp-typescript.d.ts#dc9dabe74a5be62613b17a3605309783a12ff28a",
-    "gulp-util": "github:DefinitelyTyped/DefinitelyTyped/gulp-util/gulp-util.d.ts#1da639a106527e0c4010b354a1efe52a3059a291",
-    "vinyl": "github:DefinitelyTyped/DefinitelyTyped/vinyl/vinyl.d.ts#1da639a106527e0c4010b354a1efe52a3059a291",
-    "chalk": "github:DefinitelyTyped/DefinitelyTyped/chalk/chalk.d.ts#1da639a106527e0c4010b354a1efe52a3059a291",
-    "through2": "github:DefinitelyTyped/DefinitelyTyped/through2/through2.d.ts#1da639a106527e0c4010b354a1efe52a3059a291"
+  "globalDependencies": {
+    "bluebird": "registry:dt/bluebird#3.0.0+20160928162057",
+    "shelljs": "registry:dt/shelljs#0.0.0+20161003183410"
+  },
+  "globalDevDependencies": {
+    "chai": "registry:dt/chai#3.4.0+20160601211834",
+    "mocha": "registry:dt/mocha#2.2.5+20160720003353",
+    "node": "registry:dt/node#6.0.0+20161019125345"
   }
 }
