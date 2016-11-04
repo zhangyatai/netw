@@ -1,6 +1,4 @@
 #!/bin/bash
-
-
 net=false
 nets=false
 quality="unknown"
@@ -160,4 +158,3 @@ done
 	echo '['$networks']'
 
 # fi
-exit
