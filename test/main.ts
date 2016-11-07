@@ -66,7 +66,7 @@ describe("netw object", function () {
 
             it("check essid if present", function () {
                 for (var i = 0; i < networking.length; i++) {
-                    if (networking[i].type == 'wifi' && networking[i].gateway, networking[i].essid) {
+                    if (networking[i].type == 'wifi' && networking[i].gateway && networking[i].essid) {
                         expect(networking[i]).to.have.property('essid').to.be.a('string');
                     }
                 }
