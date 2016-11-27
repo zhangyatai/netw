@@ -1,27 +1,29 @@
 import * as child_process from "child_process";
 import * as Promise from "bluebird";
 
-interface Scan {
+interface IScan {
     essid: string;
     mac: string;
     signal: string;
 }
 
-interface Network {
-    type: string;
+type INetworkType = 'wifi' | 'wired'
+
+interface INetwork {
+    type: INetworkType;
     mac: string;
     interface: string;
     essid?: string;
-    scan?: Scan[];
+    scan?: IScan[];
     ip?: string;
     gateway?: string;
 }
 
 export default function netw() {
 
-    return new Promise<Network[]>(function(resolve, reject) {
+    return new Promise<INetwork[]>(function(resolve, reject) {
         let callbacked = false;
-        let timo = setTimeout(function() {
+        const timo = setTimeout(function() {
             if (!callbacked) {
                 reject("timeout error");
             }
