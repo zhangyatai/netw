@@ -1,9 +1,0 @@
-"use strict";
-var index_1 = require("../index");
-index_1.default().then(function (d) {
-    console.log(JSON.stringify(d));
-}).catch(function (err) {
-    console.log(err);
-});
-
-//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImV4ZWMvaW5kZXgudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUFBLHNCQUFpQixVQUVqQixDQUFDLENBRjBCO0FBRTNCLGVBQUksRUFBRSxDQUFDLElBQUksQ0FBQyxVQUFVLENBQUM7SUFDbkIsT0FBTyxDQUFDLEdBQUcsQ0FBQyxJQUFJLENBQUMsU0FBUyxDQUFDLENBQUMsQ0FBQyxDQUFDLENBQUM7QUFDbkMsQ0FBQyxDQUFDLENBQUMsS0FBSyxDQUFDLFVBQVUsR0FBRztJQUNsQixPQUFPLENBQUMsR0FBRyxDQUFDLEdBQUcsQ0FBQyxDQUFDO0FBQ3JCLENBQUMsQ0FBQyxDQUFDIiwiZmlsZSI6ImV4ZWMvaW5kZXguanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgbmV0dyBmcm9tIFwiLi4vaW5kZXhcIlxuXG5uZXR3KCkudGhlbihmdW5jdGlvbiAoZCkge1xuICAgIGNvbnNvbGUubG9nKEpTT04uc3RyaW5naWZ5KGQpKTtcbn0pLmNhdGNoKGZ1bmN0aW9uIChlcnIpIHtcbiAgICBjb25zb2xlLmxvZyhlcnIpO1xufSk7Il19

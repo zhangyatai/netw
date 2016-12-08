@@ -1,13 +1,10 @@
 #!/usr/bin/env node
 
-var child_process = require('child_process')
+"use strict";
 
-child_process.exec('node '+__dirname+'/exec/index', function(err,stdout,stderr){
-
-if (err) {
-console.log(err)
-} else {
-    console.log(stdout.relpace(/ /g,''))
-}
-
-})
+var index_1 = require("./index");
+index_1.default().then(function (d) {
+    console.log(JSON.stringify(d));
+}).catch(function (err) {
+    console.log(err);
+});
