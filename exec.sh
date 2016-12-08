@@ -1,3 +1,11 @@
-#! /bin/sh
+#!/usr/bin/env node
 
-sudo node ./exec/index
+var child_process = require('child_process')
+
+child_process.exec('node '+__dirname+'/exec/index',function(err,stdout,stderr){
+
+if (err) {
+console.log(err)
+} 
+
+})
