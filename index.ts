@@ -34,7 +34,7 @@ export default function netw() {
                 callbacked = true;
                 clearTimeout(timo);
                 if (error && error !== null) {
-                    reject(error);
+                    reject('AAA'+error);
                 } else if (stderr) {
                     reject(stderr);
                 } else {

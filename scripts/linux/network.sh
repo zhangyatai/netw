@@ -7,13 +7,13 @@ for (( n=0; n<$(ifconfig -s | awk '{print($1)}' | grep -v Iface | grep -v lo | w
 	nni=$(( $n + 1 ))
 	n_label=$(ifconfig -s | awk '{print($1)}' | grep -v Iface | grep -v lo | sed -n $nni''p)
 
-	n_mac=$(ifconfig $n_label | grep 'Link' | head -1 | awk '{print($5)}')
+	n_mac=$(ifconfig $n_label 2> /dev/null | grep 'Link' | head -1 | awk '{print($5)}')
 
 
 
 
 
-	if [[ $(ifconfig $n_label | grep -c 'inet') > 0 ]]; then
+	if [[ $(ifconfig $n_label 2> /dev/null | grep -c 'inet') > 0 ]]; then
 
 		n_ip=$(ip a | grep inet | grep $n_label | awk '{print$(2)}' | head -1 |sed 's/\/24//g')
 
