@@ -42,13 +42,11 @@ describe("netw object", function () {
                 expect(networking[i]).to.have.property('interface').to.be.a('string');
                 expect(networking[i]).to.have.property('type').to.be.a('string');
                 expect(networking[i]).to.have.property('mac').to.be.a('string');
-                var options = ['wifi', 'wired'];
-                expect(options).to.include(networking[i].type);
             }
         });
 
         it("validate type of interface for API compatibility", function () {
-            var options = ['wifi', 'wired'];
+            var options = ['wifi', 'wired', 'virtual'];
             for (var i = 0; i < networking.length; i++) {
                 expect(options).to.include(networking[i].type);
             }
@@ -58,7 +56,7 @@ describe("netw object", function () {
 
             it("wifi networks scan", function () {
                 for (var i = 0; i < networking.length; i++) {
-                    if (networking[i].type == 'wifi') {
+                    if (networking[i].type === 'wifi') {
                         expect(networking[i]).to.have.property('scan').to.be.an('array');
                     }
                 }
@@ -66,7 +64,7 @@ describe("netw object", function () {
 
             it("check essid if present", function () {
                 for (var i = 0; i < networking.length; i++) {
-                    if (networking[i].type == 'wifi' && networking[i].gateway && networking[i].essid) {
+                    if (networking[i].type === 'wifi' && networking[i].gateway && networking[i].essid) {
                         expect(networking[i]).to.have.property('essid').to.be.a('string');
                     }
                 }
