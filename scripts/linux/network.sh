@@ -56,7 +56,7 @@ for (( n=0; n<$(ifconfig -s | awk '{print($1)}' | grep -v Iface | grep -v lo | w
 	if [[ $(iwconfig 2> /dev/null | grep -c $n_label) > 0 ]]; then
 
 
-		iwlist $n_label scan > /tmp/.wifiscan$n_label.tmp
+		iwlist $n_label scan 2> /dev/null > /tmp/.wifiscan$n_label.tmp
 
 
 		nettest=0
