@@ -12,7 +12,6 @@ for (( n=0; n<$(ifconfig -s | awk '{print($1)}' | grep -v Iface | grep -v lo | w
 
 
 
-
 	if [[ $(ifconfig $n_label 2> /dev/null | grep -c 'inet') > 0 ]]; then
 
 		n_ip=$(ip a | grep inet | grep $n_label | awk '{print$(2)}' | head -1 |sed 's/\/24//g')
@@ -88,8 +87,14 @@ for (( n=0; n<$(ifconfig -s | awk '{print($1)}' | grep -v Iface | grep -v lo | w
 		interfaceType='wifi'
 		scan="[$netscan]"
 	else
+
+if [[ $n_mac ]]; then
 		interfaceType='wired'
 
+else
+		interfaceType='virtual'
+
+fi
 		scan=false
 
 	fi
